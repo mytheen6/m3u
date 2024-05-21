@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { parseM3U } from './parseM3U';
+import './App.css';
 
 const M3UPlayer = () => {
   const [playlist, setPlaylist] = useState([]);
@@ -53,10 +54,10 @@ const M3UPlayer = () => {
             placeholder="Search channels" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
-            style={{ margin: '10px 0', padding: '5px', width: '300px' }}
           />
           <h2>Now Playing: {filteredPlaylist[currentTrackIndex]?.title || 'N/A'}</h2>
           <ReactPlayer
+            className="ReactPlayer"
             url={filteredPlaylist[currentTrackIndex]?.url || ''}
             playing={playing}
             controls={true}
@@ -71,7 +72,7 @@ const M3UPlayer = () => {
             {filteredPlaylist.map((track, index) => (
               <li
                 key={index}
-                style={{ color: index === currentTrackIndex ? 'red' : 'black' }}
+                className={index === currentTrackIndex ? 'active' : ''}
                 onClick={() => setCurrentTrackIndex(index)}
               >
                 {track.title}

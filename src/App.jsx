@@ -1,6 +1,7 @@
 // src/App.jsx
 import React from 'react';
 import M3UPlayer from './M3UPlayer';
+import './App.css';
 
 const App = () => {
   return (
